@@ -12,6 +12,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         NSLog("com.mycom.mytest2.log: %@", "fdasfasfasfasfasdffasa")
+        view.backgroundColor = UIColor.systemGreen
         let width = UIScreen.main.bounds.size.width
         let height = UIScreen.main.bounds.size.height
         let button1 = UIButton(frame: CGRect(x: width/3, y: height/2, width: 100, height: 30))
