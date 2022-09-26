@@ -10,12 +10,12 @@ let package = Package(
   defaultLocalization: "en",
   platforms: [.iOS("15.0")],
   products: [
-    .library(name: packageName, targets: [packageName])
+    .library(name: packageName, targets: [packageName]),
   ],
   targets: [
     .target(
       name: packageName,
       path: packageName
-    )
+    ),
   ]
 )
