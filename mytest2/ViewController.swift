@@ -8,8 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    // let scrollView = UIScrollView()
-    // let contentView = UIView()
+    
+    let textView = UITextView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -51,8 +52,10 @@ class ViewController: UIViewController {
 
     func setTextView() {
         // let textView = UITextView(frame: CGRect(x: 20.0, y: 90.0, width: 250.0, height: 100.0))
-        let textView = UITextView()
+        // let textView = UITextView()
         view.addSubview(textView)
+
+        registerForKeyboardNotifications()
 
         textView.backgroundColor = UIColor.systemBackground
         textView.contentInsetAdjustmentBehavior = .automatic
@@ -66,6 +69,32 @@ class ViewController: UIViewController {
         textView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         textView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    }
+
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    // Don't forget to unregister when done
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+    @objc func onKeyboardAppear(_ notification: NSNotification) {
+        let info = notification.userInfo!
+        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+        let kbSize = rect.size
+
+        let insets = UIEdgeInsets.init(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        textView.contentInset = insets
+        textView.scrollIndicatorInsets = insets
+    }
+
+    @objc func onKeyboardDisappear(_: NSNotification) {
+        textView.contentInset = UIEdgeInsets.zero
+        textView.scrollIndicatorInsets = UIEdgeInsets.zero
     }
 
     func setScrollView1() {
