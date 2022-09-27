@@ -8,7 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    let screenWidth = UIScreen.main.bounds.size.width
+    let screenHeight = UIScreen.main.bounds.size.height
+
     let textView = UITextView()
 
     override func viewDidLoad() {
@@ -51,8 +53,44 @@ class ViewController: UIViewController {
     func setScrollView2() {}
 
     func setTextView() {
-        // let textView = UITextView(frame: CGRect(x: 20.0, y: 90.0, width: 250.0, height: 100.0))
-        // let textView = UITextView()
+        let escButton = UIButton(type: UIButton.ButtonType.system)
+        escButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        escButton.setTitle("ESC", for: UIControl.State.normal)
+        escButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        escButton.backgroundColor = UIColor.systemBackground
+        escButton.addTarget(self, action: #selector(pressLeft), for: UIControl.Event.touchUpInside)
+        escButton.layer.borderWidth = 1
+        escButton.layer.borderColor = UIColor.black.cgColor
+        escButton.layer.cornerRadius = 8
+
+        let tabButton = UIButton(type: UIButton.ButtonType.system)
+        tabButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        tabButton.setTitle("TAB", for: UIControl.State.normal)
+        tabButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        tabButton.backgroundColor = UIColor.systemBackground
+        tabButton.addTarget(self, action: #selector(pressTab), for: UIControl.Event.touchUpInside)
+        tabButton.layer.borderWidth = 1
+        tabButton.layer.borderColor = UIColor.black.cgColor
+        tabButton.layer.cornerRadius = 8
+
+        let leftButton = UIButton(type: UIButton.ButtonType.system)
+        leftButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        leftButton.setTitle("←", for: UIControl.State.normal)
+        leftButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        leftButton.backgroundColor = UIColor.systemBackground
+        leftButton.addTarget(self, action: #selector(pressLeft), for: UIControl.Event.touchUpInside)
+        leftButton.layer.borderWidth = 1
+        leftButton.layer.borderColor = UIColor.black.cgColor
+        leftButton.layer.cornerRadius = 8
+
+        let toolBar = UIToolbar()
+        toolBar.backgroundColor = UIColor.systemBackground
+        // let barButtonItem1 = UIBarButtonItem(title: "Reset", style: UIBarButtonItem.Style.plain, target: self, action: #selector(resetTapped))
+        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        toolBar.items = [UIBarButtonItem(customView: escButton), UIBarButtonItem(customView: tabButton), UIBarButtonItem(customView: leftButton), space]
+        toolBar.sizeToFit()
+        textView.inputAccessoryView = toolBar
+
         view.addSubview(textView)
 
         registerForKeyboardNotifications()
@@ -71,6 +109,22 @@ class ViewController: UIViewController {
         textView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
 
+    @objc func pressESC() {
+        // let hex1 = 0x1b;
+        textView.insertText("@x1b")
+    }
+
+    @objc func pressTab() {
+        // let hex1 = 0x1b;
+        textView.insertText("\t")
+    }
+
+    @objc func pressLeft() {
+        // textView.insertText("left")
+        // [NSString stringWithFormat:@"\x1b%c%c", self.applicationCursor ? 'O' : '[', direction];
+        textView.insertText(NSString(format: "\\x1b%c%c", "[", "D") as String)
+    }
+
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
@@ -87,7 +141,7 @@ class ViewController: UIViewController {
         let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
         let kbSize = rect.size
 
-        let insets = UIEdgeInsets.init(top: 0, left: 0, bottom: kbSize.height, right: 0)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height, right: 0)
         textView.contentInset = insets
         textView.scrollIndicatorInsets = insets
     }

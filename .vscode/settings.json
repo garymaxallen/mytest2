@@ -8,6 +8,6 @@
         "-Xswiftc",
         "-target",
         "-Xswiftc",
-        "x86_64-apple-ios15.5-simulator",
+        "x86_64-apple-ios16.0-simulator",
     ],
 }
