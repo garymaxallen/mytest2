@@ -53,8 +53,11 @@ class ViewController: UIViewController {
     func setScrollView2() {}
 
     func setTextView() {
+        let keyWidth = 38
+        let keyspace = 5
+        let firstSpace = 2
         let escButton = UIButton(type: UIButton.ButtonType.system)
-        escButton.frame = CGRect(x: 1, y: 0, width: 40, height: 40)
+        escButton.frame = CGRect(x: firstSpace, y: 0, width: keyWidth, height: 40)
         escButton.setTitle("ESC", for: UIControl.State.normal)
         escButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         escButton.backgroundColor = UIColor.systemBackground
@@ -64,7 +67,7 @@ class ViewController: UIViewController {
         escButton.layer.cornerRadius = 8
 
         let tabButton = UIButton(type: UIButton.ButtonType.system)
-        tabButton.frame = CGRect(x: 40, y: 0, width: 40, height: 40)
+        tabButton.frame = CGRect(x: firstSpace + keyWidth + keyspace, y: 0, width: keyWidth, height: 40)
         tabButton.setTitle("TAB", for: UIControl.State.normal)
         tabButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         tabButton.backgroundColor = UIColor.systemBackground
@@ -74,7 +77,7 @@ class ViewController: UIViewController {
         tabButton.layer.cornerRadius = 8
 
         let ctrlButton = UIButton(type: UIButton.ButtonType.system)
-        ctrlButton.frame = CGRect(x: 80, y: 0, width: 40, height: 40)
+        ctrlButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 2, y: 0, width: keyWidth, height: 40)
         ctrlButton.setTitle("CTRL", for: UIControl.State.normal)
         ctrlButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         ctrlButton.backgroundColor = UIColor.systemBackground
@@ -84,7 +87,7 @@ class ViewController: UIViewController {
         ctrlButton.layer.cornerRadius = 8
 
         let leftButton = UIButton(type: UIButton.ButtonType.system)
-        leftButton.frame = CGRect(x: 120, y: 0, width: 40, height: 40)
+        leftButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 3, y: 0, width: keyWidth, height: 40)
         leftButton.setTitle("←", for: UIControl.State.normal)
         leftButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         leftButton.backgroundColor = UIColor.systemBackground
@@ -94,7 +97,7 @@ class ViewController: UIViewController {
         leftButton.layer.cornerRadius = 8
 
         let rightButton = UIButton(type: UIButton.ButtonType.system)
-        rightButton.frame = CGRect(x: 160, y: 0, width: 40, height: 40)
+        rightButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 4, y: 0, width: keyWidth, height: 40)
         rightButton.setTitle("→", for: UIControl.State.normal)
         rightButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         rightButton.backgroundColor = UIColor.systemBackground
@@ -104,7 +107,7 @@ class ViewController: UIViewController {
         rightButton.layer.cornerRadius = 8
 
         let upButton = UIButton(type: UIButton.ButtonType.system)
-        upButton.frame = CGRect(x: 200, y: 0, width: 40, height: 40)
+        upButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 5, y: 0, width: keyWidth, height: 40)
         upButton.setTitle("↑", for: UIControl.State.normal)
         upButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         upButton.backgroundColor = UIColor.systemBackground
@@ -114,7 +117,7 @@ class ViewController: UIViewController {
         upButton.layer.cornerRadius = 8
 
         let downButton = UIButton(type: UIButton.ButtonType.system)
-        downButton.frame = CGRect(x: 240, y: 0, width: 40, height: 40)
+        downButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 6, y: 0, width: keyWidth, height: 40)
         downButton.setTitle("↓", for: UIControl.State.normal)
         downButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         downButton.backgroundColor = UIColor.systemBackground
@@ -124,7 +127,7 @@ class ViewController: UIViewController {
         downButton.layer.cornerRadius = 8
 
         let slashButton = UIButton(type: UIButton.ButtonType.system)
-        slashButton.frame = CGRect(x: 280, y: 0, width: 40, height: 40)
+        slashButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 7, y: 0, width: keyWidth, height: 40)
         slashButton.setTitle("/", for: UIControl.State.normal)
         slashButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         slashButton.backgroundColor = UIColor.systemBackground
@@ -134,7 +137,7 @@ class ViewController: UIViewController {
         slashButton.layer.cornerRadius = 8
 
         let dashButton = UIButton(type: UIButton.ButtonType.system)
-        dashButton.frame = CGRect(x: 320, y: 0, width: 40, height: 40)
+        dashButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 8, y: 0, width: keyWidth, height: 40)
         dashButton.setTitle("-", for: UIControl.State.normal)
         dashButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         dashButton.backgroundColor = UIColor.systemBackground
@@ -154,7 +157,7 @@ class ViewController: UIViewController {
         // dotButton.layer.cornerRadius = 8
 
         let pasteButton = UIButton(type: UIButton.ButtonType.system)
-        pasteButton.frame = CGRect(x: 400, y: 0, width: 40, height: 40)
+        pasteButton.frame = CGRect(x: firstSpace + (keyWidth + keyspace) * 9, y: 0, width: keyWidth, height: 40)
         pasteButton.setTitle("P", for: UIControl.State.normal)
         pasteButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         pasteButton.backgroundColor = UIColor.systemBackground
@@ -236,7 +239,9 @@ class ViewController: UIViewController {
     }
 
     @objc func pressPaste() {
-        textView.insertText(UIPasteboard.general.string!)
+        if UIPasteboard.general.string != nil {
+            textView.insertText(UIPasteboard.general.string!)
+        }
     }
 
     func registerForKeyboardNotifications() {
