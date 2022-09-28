@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 
     func setTextView() {
         let escButton = UIButton(type: UIButton.ButtonType.system)
-        escButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        escButton.frame = CGRect(x: 1, y: 0, width: 40, height: 40)
         escButton.setTitle("ESC", for: UIControl.State.normal)
         escButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         escButton.backgroundColor = UIColor.systemBackground
@@ -143,15 +143,15 @@ class ViewController: UIViewController {
         dashButton.layer.borderColor = UIColor.black.cgColor
         dashButton.layer.cornerRadius = 8
 
-        let dotButton = UIButton(type: UIButton.ButtonType.system)
-        dotButton.frame = CGRect(x: 360, y: 0, width: 40, height: 40)
-        dotButton.setTitle(".", for: UIControl.State.normal)
-        dotButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
-        dotButton.backgroundColor = UIColor.systemBackground
-        dotButton.addTarget(self, action: #selector(pressDot), for: UIControl.Event.touchUpInside)
-        dotButton.layer.borderWidth = 1
-        dotButton.layer.borderColor = UIColor.black.cgColor
-        dotButton.layer.cornerRadius = 8
+        // let dotButton = UIButton(type: UIButton.ButtonType.system)
+        // dotButton.frame = CGRect(x: 360, y: 0, width: 40, height: 40)
+        // dotButton.setTitle(".", for: UIControl.State.normal)
+        // dotButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        // dotButton.backgroundColor = UIColor.systemBackground
+        // dotButton.addTarget(self, action: #selector(pressDot), for: UIControl.Event.touchUpInside)
+        // dotButton.layer.borderWidth = 1
+        // dotButton.layer.borderColor = UIColor.black.cgColor
+        // dotButton.layer.cornerRadius = 8
 
         let pasteButton = UIButton(type: UIButton.ButtonType.system)
         pasteButton.frame = CGRect(x: 400, y: 0, width: 40, height: 40)
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         kbView.addSubview(downButton)
         kbView.addSubview(slashButton)
         kbView.addSubview(dashButton)
-        kbView.addSubview(dotButton)
+        // kbView.addSubview(dotButton)
         kbView.addSubview(pasteButton)
         textView.inputAccessoryView = kbView
 
