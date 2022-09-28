@@ -58,13 +58,13 @@ class ViewController: UIViewController {
         escButton.setTitle("ESC", for: UIControl.State.normal)
         escButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         escButton.backgroundColor = UIColor.systemBackground
-        escButton.addTarget(self, action: #selector(pressLeft), for: UIControl.Event.touchUpInside)
+        escButton.addTarget(self, action: #selector(pressESC), for: UIControl.Event.touchUpInside)
         escButton.layer.borderWidth = 1
         escButton.layer.borderColor = UIColor.black.cgColor
         escButton.layer.cornerRadius = 8
 
         let tabButton = UIButton(type: UIButton.ButtonType.system)
-        tabButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        tabButton.frame = CGRect(x: 40, y: 0, width: 40, height: 40)
         tabButton.setTitle("TAB", for: UIControl.State.normal)
         tabButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         tabButton.backgroundColor = UIColor.systemBackground
@@ -73,8 +73,18 @@ class ViewController: UIViewController {
         tabButton.layer.borderColor = UIColor.black.cgColor
         tabButton.layer.cornerRadius = 8
 
+        let ctrlButton = UIButton(type: UIButton.ButtonType.system)
+        ctrlButton.frame = CGRect(x: 80, y: 0, width: 40, height: 40)
+        ctrlButton.setTitle("CTRL", for: UIControl.State.normal)
+        ctrlButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        ctrlButton.backgroundColor = UIColor.systemBackground
+        ctrlButton.addTarget(self, action: #selector(pressCtrl), for: UIControl.Event.touchUpInside)
+        ctrlButton.layer.borderWidth = 1
+        ctrlButton.layer.borderColor = UIColor.black.cgColor
+        ctrlButton.layer.cornerRadius = 8
+
         let leftButton = UIButton(type: UIButton.ButtonType.system)
-        leftButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        leftButton.frame = CGRect(x: 120, y: 0, width: 40, height: 40)
         leftButton.setTitle("←", for: UIControl.State.normal)
         leftButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
         leftButton.backgroundColor = UIColor.systemBackground
@@ -83,13 +93,90 @@ class ViewController: UIViewController {
         leftButton.layer.borderColor = UIColor.black.cgColor
         leftButton.layer.cornerRadius = 8
 
-        let toolBar = UIToolbar()
-        toolBar.backgroundColor = UIColor.systemBackground
-        // let barButtonItem1 = UIBarButtonItem(title: "Reset", style: UIBarButtonItem.Style.plain, target: self, action: #selector(resetTapped))
-        let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
-        toolBar.items = [UIBarButtonItem(customView: escButton), UIBarButtonItem(customView: tabButton), UIBarButtonItem(customView: leftButton), space]
-        toolBar.sizeToFit()
-        textView.inputAccessoryView = toolBar
+        let rightButton = UIButton(type: UIButton.ButtonType.system)
+        rightButton.frame = CGRect(x: 160, y: 0, width: 40, height: 40)
+        rightButton.setTitle("→", for: UIControl.State.normal)
+        rightButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        rightButton.backgroundColor = UIColor.systemBackground
+        rightButton.addTarget(self, action: #selector(pressRight), for: UIControl.Event.touchUpInside)
+        rightButton.layer.borderWidth = 1
+        rightButton.layer.borderColor = UIColor.black.cgColor
+        rightButton.layer.cornerRadius = 8
+
+        let upButton = UIButton(type: UIButton.ButtonType.system)
+        upButton.frame = CGRect(x: 200, y: 0, width: 40, height: 40)
+        upButton.setTitle("↑", for: UIControl.State.normal)
+        upButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        upButton.backgroundColor = UIColor.systemBackground
+        upButton.addTarget(self, action: #selector(pressUp), for: UIControl.Event.touchUpInside)
+        upButton.layer.borderWidth = 1
+        upButton.layer.borderColor = UIColor.black.cgColor
+        upButton.layer.cornerRadius = 8
+
+        let downButton = UIButton(type: UIButton.ButtonType.system)
+        downButton.frame = CGRect(x: 240, y: 0, width: 40, height: 40)
+        downButton.setTitle("↓", for: UIControl.State.normal)
+        downButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        downButton.backgroundColor = UIColor.systemBackground
+        downButton.addTarget(self, action: #selector(pressDown), for: UIControl.Event.touchUpInside)
+        downButton.layer.borderWidth = 1
+        downButton.layer.borderColor = UIColor.black.cgColor
+        downButton.layer.cornerRadius = 8
+
+        let slashButton = UIButton(type: UIButton.ButtonType.system)
+        slashButton.frame = CGRect(x: 280, y: 0, width: 40, height: 40)
+        slashButton.setTitle("/", for: UIControl.State.normal)
+        slashButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        slashButton.backgroundColor = UIColor.systemBackground
+        slashButton.addTarget(self, action: #selector(pressSlash), for: UIControl.Event.touchUpInside)
+        slashButton.layer.borderWidth = 1
+        slashButton.layer.borderColor = UIColor.black.cgColor
+        slashButton.layer.cornerRadius = 8
+
+        let dashButton = UIButton(type: UIButton.ButtonType.system)
+        dashButton.frame = CGRect(x: 320, y: 0, width: 40, height: 40)
+        dashButton.setTitle("-", for: UIControl.State.normal)
+        dashButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        dashButton.backgroundColor = UIColor.systemBackground
+        dashButton.addTarget(self, action: #selector(pressDash), for: UIControl.Event.touchUpInside)
+        dashButton.layer.borderWidth = 1
+        dashButton.layer.borderColor = UIColor.black.cgColor
+        dashButton.layer.cornerRadius = 8
+
+        let dotButton = UIButton(type: UIButton.ButtonType.system)
+        dotButton.frame = CGRect(x: 360, y: 0, width: 40, height: 40)
+        dotButton.setTitle(".", for: UIControl.State.normal)
+        dotButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        dotButton.backgroundColor = UIColor.systemBackground
+        dotButton.addTarget(self, action: #selector(pressDot), for: UIControl.Event.touchUpInside)
+        dotButton.layer.borderWidth = 1
+        dotButton.layer.borderColor = UIColor.black.cgColor
+        dotButton.layer.cornerRadius = 8
+
+        let pasteButton = UIButton(type: UIButton.ButtonType.system)
+        pasteButton.frame = CGRect(x: 400, y: 0, width: 40, height: 40)
+        pasteButton.setTitle("P", for: UIControl.State.normal)
+        pasteButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        pasteButton.backgroundColor = UIColor.systemBackground
+        pasteButton.addTarget(self, action: #selector(pressPaste), for: UIControl.Event.touchUpInside)
+        pasteButton.layer.borderWidth = 1
+        pasteButton.layer.borderColor = UIColor.black.cgColor
+        pasteButton.layer.cornerRadius = 8
+
+        let kbView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 40))
+        // kbView.backgroundColor = UIColor.systemBlue
+        kbView.addSubview(escButton)
+        kbView.addSubview(tabButton)
+        kbView.addSubview(ctrlButton)
+        kbView.addSubview(leftButton)
+        kbView.addSubview(rightButton)
+        kbView.addSubview(upButton)
+        kbView.addSubview(downButton)
+        kbView.addSubview(slashButton)
+        kbView.addSubview(dashButton)
+        kbView.addSubview(dotButton)
+        kbView.addSubview(pasteButton)
+        textView.inputAccessoryView = kbView
 
         view.addSubview(textView)
 
@@ -110,19 +197,46 @@ class ViewController: UIViewController {
     }
 
     @objc func pressESC() {
-        // let hex1 = 0x1b;
-        textView.insertText("@x1b")
+        textView.insertText("\u{1b}")
     }
 
     @objc func pressTab() {
-        // let hex1 = 0x1b;
-        textView.insertText("\t")
+        // textView.insertText("\t")
+        textView.insertText("\u{09}")
     }
 
+    @objc func pressCtrl() {}
+
     @objc func pressLeft() {
-        // textView.insertText("left")
-        // [NSString stringWithFormat:@"\x1b%c%c", self.applicationCursor ? 'O' : '[', direction];
-        textView.insertText(NSString(format: "\\x1b%c%c", "[", "D") as String)
+        textView.insertText("\u{1b}[D")
+    }
+
+    @objc func pressRight() {
+        textView.insertText("\u{1b}[C")
+    }
+
+    @objc func pressUp() {
+        textView.insertText("\u{1b}[A")
+    }
+
+    @objc func pressDown() {
+        textView.insertText("\u{1b}[B")
+    }
+
+    @objc func pressSlash() {
+        textView.insertText("/")
+    }
+
+    @objc func pressDash() {
+        textView.insertText("-")
+    }
+
+    @objc func pressDot() {
+        textView.insertText(".")
+    }
+
+    @objc func pressPaste() {
+        textView.insertText(UIPasteboard.general.string!)
     }
 
     func registerForKeyboardNotifications() {
