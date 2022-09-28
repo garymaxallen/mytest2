@@ -26,6 +26,23 @@ class ViewController: UIViewController {
         return true
     }
 
+    override func didRotate(from _: UIInterfaceOrientation) {
+        var text = ""
+        switch UIDevice.current.orientation {
+        case .portrait:
+            text = "Portrait"
+        case .portraitUpsideDown:
+            text = "PortraitUpsideDown"
+        case .landscapeLeft:
+            text = "LandscapeLeft"
+        case .landscapeRight:
+            text = "LandscapeRight"
+        default:
+            text = "Another"
+        }
+        NSLog("com.mycom.mytest2.log: orientation: %@", text)
+    }
+
     func myfunc1() {
         NSLog("com.mycom.mytest2.log: %@", "fdasfasfasfasfasdffasa")
         view.backgroundColor = UIColor.systemGreen
