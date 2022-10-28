@@ -1,1 +1,7 @@
 .build
+.vscode
+.DS_Store
+build
+mytest2.xcodeproj/xcuserdata/
+mytest2.xcodeproj/xcshareddata/
+mytest2.xcodeproj/project.xcworkspace/
