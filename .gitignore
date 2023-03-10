@@ -1,6 +1,6 @@
 .build
-.vscode
 .DS_Store
+.swiftpm
 build
 mytest2.xcodeproj/xcuserdata/
 mytest2.xcodeproj/xcshareddata/
